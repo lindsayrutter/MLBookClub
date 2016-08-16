@@ -1,0 +1,321 @@
+%% LyX 2.2.1 created this file.  For more info, see http://www.lyx.org/.
+\documentclass{article}
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\usepackage{url}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{
+ pdfstartview={XYZ null null 1}}
+\usepackage{breakurl}
+\begin{document}
+<<setup, include=FALSE, cache=FALSE>>=
+library(knitr)
+# set global chunk options
+opts_chunk$set(message=FALSE,tidy.opts=list(keep.blank.line=TRUE, width.cutoff=40),options(width=60))
+@
+
+\title{Linear and logistic regression}
+
+\maketitle
+
+We can review linear regression using a dataset of Grandfather clocks. We can look at simple linear regression and multiple linear regression. We can also review parameter interpretations, including for interactive terms.
+
+<<fig.width=6, fig.height=6,out.width='.6\\linewidth'>>=
+# Read in the clocks dataset
+clocksDat = read.csv("clocks.csv")
+clocksDat
+plot(clocksDat,pch=16)
+@
+
+\section{Simple linear regression}
+
+We can first perform simple linear regression with one quantitative explanatory variable - age.
+
+<<>>=
+clocksLinAge = lm(Price ~ Age, data=clocksDat)
+summary(clocksLinAge)
+@
+
+\newpage
+
+We can visualize what this best-fit line appears like.
+
+<<fig.width=6, fig.height=6,out.width='.6\\linewidth'>>=
+intercept = coef(clocksLinAge)["(Intercept)"]
+age = coef(clocksLinAge)["Age"]
+q = qplot(clocksDat$Age,clocksDat$Price)
+q = q + geom_abline(intercept = intercept, slope = age) + xlim(-10,200) + ylim(-1000,2200)
+q + xlab("Clock age") + ylab("Clock price")
+@
+
+\vspace{15mm}
+
+\textbf{1) What is the interpretation for the intercept?}
+
+\vspace{20mm}
+
+\textbf{2) What is the interpretation for the slope?}
+
+\vspace{20mm}
+
+\textbf{3) How much would we predict a 175 year old clock would cost?}
+
+\vspace{20mm}
+
+\newpage
+
+\section{Multiple linear regression - no interaction terms}
+
+Now, we can perform multiple linear regression with two quantitative variables - age and number of bidders.
+
+<<>>=
+clocksLinAgeBid = lm(Price ~ Age + Bidders, data=clocksDat)
+summary(clocksLinAgeBid)
+@
+
+\vspace{5mm}
+
+\textbf{4) What is the interpretation for the intercept?}
+
+\vspace{20mm}
+
+\textbf{5) What is the interpretation for the age slope?}
+
+\vspace{20mm}
+
+\textbf{6) What is the interpretation for the bidders slope?}
+
+\vspace{20mm}
+
+\textbf{7) How much would we predict a 194 year old clock would cost if there are 5 bidders?}
+
+\newpage
+
+\section{Multiple linear regression - with interaction term}
+
+When we did not use an interaction term above, we assumed that the price change due to a change in age would not be affected by the number of bidders. Likewise, we also assumed that the price change due to a change in the number of bidders would not be affected by the age.
+
+\vspace{5mm}
+
+\fbox{\includegraphics[width=0.5\textwidth]{noint.png}}
+
+\vspace{5mm}
+
+\noindent However, it could be the case that the independent variables do have an interactive effect. In this case, the linear relationship between price and age would have a different slope coefficient depending on the number of bidders. Likewise, the linear relationship between price and number of bidders would have a different slope coefficient depending on the age.
+
+\vspace{5mm}
+
+\fbox{\includegraphics[width=0.5\textwidth]{int.png}}
+
+\vspace{5mm}
+
+\noindent As a result, at this stage, we might want to determine if the two independent variables have an interactive effect.
+
+<<>>=
+clocksLinAgeBidInt = lm(Price ~ Age + Bidders + Age*Bidders, data=clocksDat)
+summary(clocksLinAgeBidInt)
+@
+
+\vspace{5mm}
+
+\textbf{8) What is the interpretation for the age slope?}
+
+\vspace{20mm}
+
+\textbf{9) What is the interpretation for the number of bidders slope?}
+
+\vspace{20mm}
+
+\textbf{10) How much would we predict a 194 year old clock would cost if there are 5 bidders?}
+
+\vspace{20mm}
+
+\textbf{11) Which model would you use? Simple linear regression? Multiple linear regression without interaction term? Or, multiple lienar regression with interaction term?}
+
+\newpage
+
+\section{Binomial Logistic Regression}
+
+We can use a lobster survival dataset to perform binomial logistic regression.
+
+<<>>=
+lobsterDat = read.csv("lobster.csv")
+colnames(lobsterDat) = c("carpaceLength","survive")
+dim(lobsterDat)
+head(lobsterDat)
+@
+
+<<>>=
+lobsterLogit <- glm(survive ~ carpaceLength, data = lobsterDat, family = "binomial")
+lobsterLogit
+@
+
+Now that we have the coefficient estimations, we can plot the logistic function of the data.
+
+<<fig.width=3, fig.height=3,out.width='.3\\linewidth'>>=
+lobsterIntercept = coef(lobsterLogit)["(Intercept)"]
+lobsterCarpaceLength = coef(lobsterLogit)["carpaceLength"]
+
+carpaceLengths = seq(0,60,0.1)
+survive = 1/(1+exp(-(lobsterIntercept+lobsterCarpaceLength*carpaceLengths)))
+q = qplot(carpaceLengths,survive)
+q = q + theme(axis.text=element_text(size=14), axis.title=element_text(size=14))
+q
+@
+
+\vspace{5mm}
+
+\textbf{12) What is the probability of surviving if carpaceLength is 30mm?}
+
+\vspace{20mm}
+
+\textbf{13) What is the probability of surviving if carpaceLength is 31mm?}
+
+\vspace{20mm}
+
+\textbf{14) What is the probability of surviving if carpaceLength is 55mm?}
+
+\vspace{20mm}
+
+\textbf{15) What are the odds of survival if carpaceLength is 30mm?}
+
+\vspace{20mm}
+
+\textbf{16) What are the odds of survival if carpaceLength is 31mm?}
+
+\vspace{20mm}
+
+\textbf{17) What is the odds ratio?}
+
+\vspace{20mm}
+
+\textbf{18) What is the interpretation of the odds ratio?}
+
+\newpage
+
+\section{Multinomial Logistic Regression}
+
+We can use a dataset regarding survival in the Titanic tragedy to perform multinomial logistic regression. This dataset was taken from the data science education and competition website Kaggle (\url{https://www.kaggle.com/}).
+
+<<>>=
+titanicDat = read.csv('titanic.csv',header=T,na.strings=c(""))
+dim(titanicDat)
+head(titanicDat)
+@
+
+We examine missing data as a preprocessing step.
+
+<<fig.width=7, fig.height=7,out.width='.7\\linewidth'>>=
+sapply(titanicDat,function(x) sum(is.na(x)))
+# R package to visualize missing data information
+library(Amelia)
+missmap(titanicDat, main = "Missing values vs observed")
+@
+
+We remove the columns for PassengerID, Name, Ticket, and Cabin (since it is missing so many values).
+
+<<>>=
+titanicDat <- subset(titanicDat,select=c(2,3,5,6,7,8,10,12))
+@
+
+There are many values missing from Age. We replace the missing values with the mean age of the known values (which was ~29.7).
+
+<<>>=
+titanicDat$Age[is.na(titanicDat$Age)] <- mean(titanicDat$Age,na.rm=T)
+@
+
+There are two row with missing values, so we remove them as well.
+
+<<>>=
+titanicDat <- titanicDat[!is.na(titanicDat$Embarked),]
+rownames(titanicDat) <- NULL
+@
+
+We can verify that we know what the indicators are for the variable Sex.
+
+<<>>=
+contrasts(titanicDat$Sex)
+@
+
+We now have 889 rows of clean data. We can split these data into a training and test set as follows:
+
+<<>>=
+trainDat <- titanicDat[1:800,]
+testDat <- titanicDat[801:889,]
+@
+
+We can run a binomial logistic regression with the only explanatory variable being sex.
+
+<<>>=
+titanicLogit <- glm(Survived ~ Sex, data = titanicDat, family = "binomial")
+titanicLogit
+@
+
+\vspace{5mm}
+
+\textbf{19) What is the probability of surviving if male?}
+
+\vspace{20mm}
+
+\textbf{20) What is the probability of surviving if female?}
+
+\vspace{20mm}
+
+\textbf{21) What are the odds of surviving if male?}
+
+\vspace{20mm}
+
+\textbf{22) What are the odds of surviving if female?}
+
+\vspace{20mm}
+
+\textbf{23) What is the odds ratio?}
+
+\vspace{20mm}
+
+\textbf{24) What is the interpretation of the odds ratio?}
+
+\newpage
+
+Now, we can consider more than one explanatory variable. Let's consider all explanatory variables that remain in the cleaned data.
+
+<<>>=
+titanicLogitFull <- glm(Survived ~ ., data = titanicDat, family = "binomial")
+summary(titanicLogitFull)
+@
+
+\vspace{5mm}
+
+\textbf{25) What is the interpretation of the odds ratio for age?}
+
+\vspace{20mm}
+
+\textbf{26) What is the interpretation of the odds ratio for class?}
+
+\vspace{20mm}
+
+We can use ANOVA to examine the difference between the null deviance (model with only intercept) and the residual deviance. The table shows that the deviance drops when adding each variable one at a time. However, the p-values show that only Pclass, Sex, Age, and Sibsp show a significant drop in residual deviance.
+
+<<>>=
+anova(titanicLogitFull, test="Chisq")
+@
+
+\vspace{5mm}
+
+We can assess how well our full model fits the testing data now! We can obtain probabilities in the form of P(Y=1|X). We can use a decision boundary of 0.5. In other words, if P(Y=1|X) > 0.5, then Y=1. Otherwise, Y=0. We then compare this to the actual values of survival being 1 (Survived) or 0 (Died).
+
+<<>>=
+fitRes = predict(titanicLogitFull,newdata=subset(testDat,select=c(2,3,4,5,6,7,8)),type='response')
+fitRes = ifelse(fitRes > 0.5,1,0)
+misClasificError = mean(fitRes != testDat$Survived)
+print(paste('Accuracy',1-misClasificError))
+@
+
+\end{document}
