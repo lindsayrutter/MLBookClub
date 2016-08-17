@@ -1,9 +1,22 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 AUG 2016 11:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  17 AUG 2016 10:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **\nonstopmode \input ./regression.tex
 (./regression.tex
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 [
+     %% LyX 2.2.1 created this file.  For more info, see http://www.lyx.org/.
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no [ in font nullfont!
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/size10.clo
@@ -15,12 +28,17 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \c@subsubsection=\count82
 \c@paragraph=\count83
 \c@subparagraph=\count84
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--289
+[]
+ []
+
 \c@figure=\count85
 \c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
+[1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -452,31 +470,43 @@ LaTeX Info: Redefining \nameref on input line 67.
 \@outlinefile=\write3
 \openout3 = `regression.out'.
 
-LaTeX Font Info:    Try loading font information for OT1+pplx on input line 73.
 
+! Undefined control sequence.
+l.68 \SweaveOpts
+                {concordance=TRUE}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pplx.fd
+[2
+
+]
+LaTeX Font Info:    Try loading font information for OT1+pplx on input line 74.
+
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pplx.fd
 File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 73.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 74.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 73.
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 74.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 73.
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 74.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 73.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 74.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1zplm.fd
@@ -485,118 +515,115 @@ File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 
 LaTeX Warning: No \author given.
 
-Package color Info: Redefining color shadecolor on input line 77.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 78.
+Package color Info: Redefining color shadecolor on input line 78.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 79.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 80.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 81.
 
-<figure/unnamed-chunk-1-1.pdf, id=24, 433.62pt x 433.62pt>
+<figure/unnamed-chunk-1-1.pdf, id=34, 433.62pt x 433.62pt>
 File: figure/unnamed-chunk-1-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-1-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-1-1.pdf used on input line 122.
+Package pdftex.def Info: figure/unnamed-chunk-1-1.pdf used on input line 123.
 (pdftex.def)             Requested size: 283.22162pt x 283.23251pt.
- [1
-
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+ [3]
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 126.
-Package color Info: Redefining color shadecolor on input line 131.
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 156
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 127.
+Package color Info: Redefining color shadecolor on input line 132.
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 157
 .
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [2 <./figure/unnamed-chunk-1-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 165.
+) [4 <./figure/unnamed-chunk-1-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 166.
 
-Overfull \hbox (0.35341pt too wide) in paragraph at lines 170--170
+Overfull \hbox (0.35341pt too wide) in paragraph at lines 171--171
 [][]\T1/cmtt/m/n/10 q[] []=[] []q[] []+[] []geom_abline[][]([][]intercept[] []=
  intercept,[] []slope[] []= age)[] []+[] []xlim[][]([][]-[][]10[][],[][]200[][]
 )[] []+[] []ylim[][]([][]-[][]1000[][],[][]2200[][])[][] 
  []
 
-<figure/unnamed-chunk-3-1.pdf, id=45, 433.62pt x 433.62pt>
+<figure/unnamed-chunk-3-1.pdf, id=53, 433.62pt x 433.62pt>
 File: figure/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-3-1.pdf used on input line 174.
+Package pdftex.def Info: figure/unnamed-chunk-3-1.pdf used on input line 175.
 (pdftex.def)             Requested size: 283.22162pt x 283.23251pt.
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <10> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 180.
- [3 <./figure/unnamed-chunk-3-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 199.
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 181.
+ [5 <./figure/unnamed-chunk-3-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 200.
 
-[4] <noint.png, id=60, 536.2434pt x 511.1898pt>
+[6] <noint.png, id=68, 536.2434pt x 511.1898pt>
 File: noint.png Graphic file (type png)
  <use noint.png>
-Package pdftex.def Info: noint.png used on input line 253.
+Package pdftex.def Info: noint.png used on input line 254.
 (pdftex.def)             Requested size: 236.01561pt x 224.9866pt.
 
-<int.png, id=62, 620.5584pt x 505.89pt>
+<int.png, id=70, 620.5584pt x 505.89pt>
 File: int.png Graphic file (type png)
  <use int.png>
-Package pdftex.def Info: int.png used on input line 261.
+Package pdftex.def Info: int.png used on input line 262.
 (pdftex.def)             Requested size: 236.01561pt x 192.4023pt.
-Package color Info: Redefining color shadecolor on input line 268.
- [5 <./noint.png> <./int.png>] [6]
-Package color Info: Redefining color shadecolor on input line 322.
-Package color Info: Redefining color shadecolor on input line 347.
-Package color Info: Redefining color shadecolor on input line 370.
- <figure/unnamed-chunk-8-1.pdf, id=73, 216.81pt x 216.81pt>
+Package color Info: Redefining color shadecolor on input line 269.
+ [7 <./noint.png> <./int.png>] [8]
+Package color Info: Redefining color shadecolor on input line 323.
+Package color Info: Redefining color shadecolor on input line 348.
+Package color Info: Redefining color shadecolor on input line 371.
+ <figure/unnamed-chunk-8-1.pdf, id=82, 216.81pt x 216.81pt>
 File: figure/unnamed-chunk-8-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-8-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-8-1.pdf used on input line 382.
+Package pdftex.def Info: figure/unnamed-chunk-8-1.pdf used on input line 383.
 (pdftex.def)             Requested size: 141.61081pt x 141.61624pt.
- [7] [8 <./figure/unnamed-chunk-8-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 421.
-Package color Info: Redefining color shadecolor on input line 468.
+ [9] [10 <./figure/unnamed-chunk-8-1.pdf>]
+Package color Info: Redefining color shadecolor on input line 422.
+Package color Info: Redefining color shadecolor on input line 469.
 
-<figure/unnamed-chunk-10-1.pdf, id=90, 505.89pt x 505.89pt>
+<figure/unnamed-chunk-10-1.pdf, id=98, 505.89pt x 505.89pt>
 File: figure/unnamed-chunk-10-1.pdf Graphic file (type pdf)
 
 <use figure/unnamed-chunk-10-1.pdf>
-Package pdftex.def Info: figure/unnamed-chunk-10-1.pdf used on input line 486.
+Package pdftex.def Info: figure/unnamed-chunk-10-1.pdf used on input line 487.
 (pdftex.def)             Requested size: 330.42041pt x 330.42247pt.
- [9]
-Package color Info: Redefining color shadecolor on input line 493.
-Package color Info: Redefining color shadecolor on input line 503.
-Package color Info: Redefining color shadecolor on input line 513.
-Package color Info: Redefining color shadecolor on input line 524.
-Package color Info: Redefining color shadecolor on input line 539.
-Package color Info: Redefining color shadecolor on input line 550.
- [10 <./figure/unnamed-chunk-10-1.pdf>]
-[11]
-Package color Info: Redefining color shadecolor on input line 599.
-Package color Info: Redefining color shadecolor on input line 652.
- [12]
-Package color Info: Redefining color shadecolor on input line 687.
+ [11]
+Package color Info: Redefining color shadecolor on input line 494.
+Package color Info: Redefining color shadecolor on input line 504.
+Package color Info: Redefining color shadecolor on input line 514.
+Package color Info: Redefining color shadecolor on input line 525.
+Package color Info: Redefining color shadecolor on input line 540.
+Package color Info: Redefining color shadecolor on input line 551.
+ [12 <./figure/unnamed-chunk-10-1.pdf>] [13]
+Package color Info: Redefining color shadecolor on input line 600.
+Package color Info: Redefining color shadecolor on input line 653.
+ [14]
+Package color Info: Redefining color shadecolor on input line 688.
 
-Overfull \hbox (42.34315pt too wide) in paragraph at lines 689--689
+Overfull \hbox (42.34315pt too wide) in paragraph at lines 690--690
 [][]\T1/cmtt/m/n/10 fitRes[] []=[] []predict[][](titanicLogitFull,[][]newdata[]
 []=[][]subset[][](testDat,[][]select[][]=[][]c[][]([][]2[][],[][]3[][],[][]4[][
 ],[][]5[][],[][]6[][],[][]7[][],[][]8[][])),[][]type[][]=[][]\TS1/cmtt/m/n/10 '
 \T1/cmtt/m/n/10 response\TS1/cmtt/m/n/10 '[][]\T1/cmtt/m/n/10 )[][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 700.
-[13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 700.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 701.
+[15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 701.
  (./regression.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 700.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 700.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 701.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 701.
 Package rerunfilecheck Info: File `regression.out' has not changed.
-(rerunfilecheck)             Checksum: 78C9C9FD6D09BD4A1DE0CE99810E8941;1239.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 700.
+(rerunfilecheck)             Checksum: EFC34E191D47077E9BFD11EF34542040;1201.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 701.
  ) 
 Here is how much of TeX's memory you used:
- 9855 strings out of 493089
- 141009 string characters out of 6134842
- 215890 words of memory out of 5000000
+ 9856 strings out of 493089
+ 141017 string characters out of 6134842
+ 215880 words of memory out of 5000000
  13207 multiletter control sequences out of 15000+600000
  31606 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -604,14 +631,15 @@ Here is how much of TeX's memory you used:
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/te
 xlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/
-2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on regression.pdf (13 pages, 302652 bytes).
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/urw/palatino/uplr8a.pfb>
+Output written on regression.pdf (15 pages, 311126 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
- 19 named destinations out of 1000 (max. 500000)
+ 157 PDF objects out of 1000 (max. 8388607)
+ 121 compressed objects within 2 object streams
+ 20 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

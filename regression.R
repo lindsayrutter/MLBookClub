@@ -9,37 +9,33 @@ intercept = coef(clocksLinAge)["(Intercept)"]
 age = coef(clocksLinAge)["Age"]
 qplot(clocksDat$Age,clocksDat$Price) + geom_abline(intercept = intercept, slope = age) + xlim(-10,200) + ylim(-1000,2200)
 
-# What is the interpretation for the intercept?
-# A clock that is zero years old will cost on average -$191.66
+# 1) What is the interpretation for the intercept?
 
-# What is the interpretation for the slope?
-# A one year increase in clock age will correspond on average to a $10.48 increase in price.
+# 2) What is the interpretation for the slope?
 
-# How much would we predict a 175 year old clock would cost?
-# intercept + age*175 = 1642.184
+# 3) How much would we predict a 175 year old clock would cost?
 
 clocksLinAgeBid = lm(Price ~ Age + Bidders, data=clocksDat)
 summary(clocksLinAgeBid)
 
-# What is the interpretation for the intercept?
-# A clock that is zero years old and has no bidders will cost on average -$1336.72.
+# 4) What is the interpretation for the intercept?
 
-# What is the interpretation for the age slope?
-# All things equal, a one year increase in clock age will correspond on average to a $12.7362 increase in price.
+# 5) What is the interpretation for the age slope?
 
-# What is the interpretation for the bidders slope?
-# All things equal, one more bidder will correspond on average to a $85.8151 increase in price
+# 6) What is the interpretation for the bidders slope?
+
+# 7) How much would we predict a 194 year old clock would cost if there are 5 bidders?
 
 clocksLinAgeBidInt = lm(Price ~ Age + Bidders + Age*Bidders, data=clocksDat)
 summary(clocksLinAgeBidInt)
 
-# How to interpret these values?
+# 8) What is the interpretation for the age slope?
 
-# A one year increase in clock age will correspond on average to a $323.62 + $1.2979*(Number of bidders) increase in price.
+# 9) What is the interpretation for the number of bidders slope?
 
-# A one bidder increase will correspond on average to a $229.3455 + $1.2979*(Age) increase in price.
+# 10) How much would we predict a 194 year old clock would cost if there are 5 bidders?
 
-# Which is the best model?
+# 11) Which model would you use? Simple linear regression? Multiple linear regression without interaction term? Or, multiple regression with interaction term?
 
 # Lobsters
 lobsterDat = read.csv("lobster.csv")
@@ -55,31 +51,28 @@ carpaceLengths = seq(0,60,0.1)
 survive = 1/(1+exp(-(lobsterIntercept+lobsterCarpaceLength*carpaceLengths)))
 qplot(carpaceLengths,survive)
 
-# What is the probability of surviving if carpaceLength is 30mm?
+# 12) What is the probability of surviving if carpaceLength is 30mm?
 # 1/(1+exp(-(B0+B1*x)))
-prob30 = 1/(1+exp(-(lobsterIntercept+lobsterCarpaceLength*30)))
+# prob30 = 1/(1+exp(-(lobsterIntercept+lobsterCarpaceLength*30)))
 
-# What is the probability of surviving if carpaceLength is 31mm?
-prob31 = 1/(1+exp(-(lobsterIntercept+lobsterCarpaceLength*31)))
+# 13) What is the probability of surviving if carpaceLength is 31mm?
+# prob31 = 1/(1+exp(-(lobsterIntercept+lobsterCarpaceLength*31)))
 
-# What is the probability of surviving if carpaceLength is 55mm?
-prob55 = 1/(1+exp(-(lobsterIntercept+lobsterCarpaceLength*55)))
+# 14) What is the probability of surviving if carpaceLength is 55mm?
+# prob55 = 1/(1+exp(-(lobsterIntercept+lobsterCarpaceLength*55)))
 
-# Odds ratio
-OR = exp((lobsterIntercept+lobsterCarpaceLength*31))/exp((lobsterIntercept+lobsterCarpaceLength*30))
-OR = exp((lobsterIntercept+lobsterCarpaceLength*18))/exp((lobsterIntercept+lobsterCarpaceLength*17))
+# 15) What are the odds of survival if carpaceLength is 30mm?
+# odd30 = prob30/(1-prob30) # 0.13439
 
-# Odd of surival if carpaceLength is 30mm?
-odd30 = prob30/(1-prob30) # 0.13439
+# 16) What are the odds of survival if carpaceLength is 31mm?
+# odd31 = prob31/(1-prob31) # 0.16330
 
-# Odd of surival if carpaceLength is 31mm?
-odd31 = prob31/(1-prob31) # 0.16330
+# 17) What is the odds ratio?
+# OR = exp((lobsterIntercept+lobsterCarpaceLength*31))/exp((lobsterIntercept+lobsterCarpaceLength*30))
+# OR = exp((lobsterIntercept+lobsterCarpaceLength*18))/exp((lobsterIntercept+lobsterCarpaceLength*17))
+# OR = odd31/odd30
 
-# Odds ratio
-odd31/odd30
-
-# Interpretation
-# All things equal, a 1mm increase in carpace length will have 21.5% increase in the odds of survival.
+# 18) What is the interpretation of the odds ratio?
 
 ################### TITANIC ##################
 
@@ -122,33 +115,31 @@ Sexmale = coef(titanicLogit)["Sexmale"]
 #EmbarkedQ = coef(titanicLogit)["EmbarkedQ"]
 #EmbarkedS = coef(titanicLogit)["EmbarkedS"]
 
-# What is the probability of surviving if male?
-probM = 1/(1+exp(-(titanicIntercept+Sexmale*1)))
+# 19) What is the probability of surviving if male?
+# probM = 1/(1+exp(-(titanicIntercept+Sexmale*1)))
 
-# What is the probability of surviving if female?
-probF = 1/(1+exp(-(titanicIntercept+Sexmale*0)))
+# 20) What is the probability of surviving if female?
+# probF = 1/(1+exp(-(titanicIntercept+Sexmale*0)))
 
 # We can double-check these probabilities
-survivedM = sum(titanicDat$Sex=='male'&titanicDat$Survived==1)
-diedM = sum(titanicDat$Sex=='male'&titanicDat$Survived==0)
-survivedF = sum(titanicDat$Sex=='female'&titanicDat$Survived==1)
-diedF = sum(titanicDat$Sex=='female'&titanicDat$Survived==0)
+# survivedM = sum(titanicDat$Sex=='male'&titanicDat$Survived==1)
+# diedM = sum(titanicDat$Sex=='male'&titanicDat$Survived==0)
+# survivedF = sum(titanicDat$Sex=='female'&titanicDat$Survived==1)
+# diedF = sum(titanicDat$Sex=='female'&titanicDat$Survived==0)
 
-survivedM/(survivedM+diedM) #0.1889
-survivedF/(survivedF+diedF) #0.7404
+# 21) What are the odds of surviving if male? 
+# survivedM/(survivedM+diedM)
+# survivedM/(survivedM+diedM)/(1-survivedM/(survivedM+diedM))
 
-# Odds ratio
-OR = exp((titanicIntercept+Sexmale*1))/exp((titanicIntercept+Sexmale*0)) #0.08167
-OR = exp(Sexmale) #0.08167
+# 22) What are the odds of surviving if female?
+# survivedF/(survivedF+diedF)
+# survivedF/(survivedF+diedF)/(1-survivedF/(survivedF+diedF))
 
-# male odd of survival 
-survivedM/(survivedM+diedM)/(1-survivedM/(survivedM+diedM)) # 0.232
+# 23) What is the odds ratio?
+# OR = exp((titanicIntercept+Sexmale*1))/exp((titanicIntercept+Sexmale*0)) #0.08167
+# OR = exp(Sexmale) #0.08167
 
-# female odd of survival 
-survivedF/(survivedF+diedF)/(1-survivedF/(survivedF+diedF)) # 2.8518
-
-# Interpretation
-# All things equal, males are associated with a 91.83% decrease in the odds of survival than females.
+# 24) What is the interpretation of the odds ratio?
 
 ####################################
 
@@ -166,15 +157,12 @@ Fare = coef(titanicLogit)["Fare"]
 EmbarkedQ = coef(titanicLogit)["EmbarkedQ"]
 EmbarkedS = coef(titanicLogit)["EmbarkedS"]
 
-# Interpretation
-# All things equal, a person one year older is associated with a 4% decrease in the odds of survival.
+# 25) What is the interpretation of the odds ratio for age?
 
-# Interpretation
-# All things equal, one decrease in class is associated with a 33% decrease in the odds of survival.
+# 26) What is the interpretation of the odds ratio for class?
 
 anova(titanicLogitFull, test="Chisq")
 
-###
 fitted.results <- predict(titanicLogitFull,newdata=subset(testDat,select=c(2,3,4,5,6,7,8)),type='response')
 fitted.results <- ifelse(fitted.results > 0.5,1,0)
 misClasificError <- mean(fitted.results != testDat$Survived)

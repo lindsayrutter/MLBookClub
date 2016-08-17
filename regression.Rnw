@@ -1,4 +1,4 @@
-%% LyX 2.2.1 created this file.  For more info, see http://www.lyx.org/.
+[%% LyX 2.2.1 created this file.  For more info, see http://www.lyx.org/.
 \documentclass{article}
 \usepackage[sc]{mathpazo}
 \usepackage[T1]{fontenc}
@@ -15,8 +15,10 @@
  pdfstartview={XYZ null null 1}}
 \usepackage{breakurl}
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 <<setup, include=FALSE, cache=FALSE>>=
 library(knitr)
+library(ggplot2)
 # set global chunk options
 opts_chunk$set(message=FALSE,tidy.opts=list(keep.blank.line=TRUE, width.cutoff=40),options(width=60))
 @
@@ -98,7 +100,7 @@ summary(clocksLinAgeBid)
 
 \newpage
 
-\section{Multiple linear regression - with interaction term}
+\section{Multiple regression - with interaction term}
 
 When we did not use an interaction term above, we assumed that the price change due to a change in age would not be affected by the number of bidders. Likewise, we also assumed that the price change due to a change in the number of bidders would not be affected by the age.
 
@@ -137,7 +139,7 @@ summary(clocksLinAgeBidInt)
 
 \vspace{20mm}
 
-\textbf{11) Which model would you use? Simple linear regression? Multiple linear regression without interaction term? Or, multiple lienar regression with interaction term?}
+\textbf{11) Which model would you use? Simple linear regression? Multiple linear regression without interaction term? Or, multiple regression with interaction term?}
 
 \newpage
 
